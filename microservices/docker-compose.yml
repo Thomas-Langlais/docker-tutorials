@@ -1,0 +1,40 @@
+version: '3'
+services:
+  foo:
+    build: ./img-foo/
+    container_name: foo-api
+    ports:
+      - 8000:80
+    networks:
+      - webnet
+  bar:
+    build: ./img-bar/
+    container_name: bar-api
+    ports:
+      - 8001:80
+    networks:
+      - webnet
+      - backend
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - backend
+  db:
+    build: ./db
+    restart: always
+    container_name: my-postgres
+    networks:
+      - backend
+  redis:
+    image: redis
+    container_name: my-redis
+    networks:
+      - backend
+networks:
+  webnet:
+    driver: bridge
+  backend:
+    driver: bridge

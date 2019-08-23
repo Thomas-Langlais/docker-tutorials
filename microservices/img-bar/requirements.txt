@@ -1,0 +1,4 @@
+Flask
+requests
+redis
+psycopg2-binary

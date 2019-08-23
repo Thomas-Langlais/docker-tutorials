@@ -1,0 +1,14 @@
+version: '3'
+services:
+  foo:
+    build: ./foo
+    container_name: foo
+    volumes:
+      - configdata:/var/lib/data
+  bar:
+    build: ./bar
+    container_name: bar
+    volumes:
+      - configdata:/var/lib/data
+volumes:
+  configdata:
